@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="56.833mm" height="107.67mm" version="1.1" viewBox="0 0 56.833 107.67" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(-46.044 -56.598)">
+  <g>
+   <path d="m51.938 143.57c6.0543-22.565 22.913-68.542 24.153-71.146 3.8637-8.1205 4.9365-12.173 12.473-15.102 5.9423-1.692 8.7693-0.24317 11.607 2.4205 1.6741 2.1252 3.0523 4.3623 2.6296 8.505-0.35454 2.5874-1.5128 4.5756-6.4877 8.5391-1.6871 1.0349-4.097 1.9278-3.5908 5.6212 2.8284 12.418 3.0894 14.646 4.101 18.813 2.1403 10.229 2.8 16.833 4.4453 22.111 1.5386 5.2211 0.47647 8.5181-1.4862 9.2633-2.3748 1.5429-6.5259 3.7781-9.4221 6.0253-1.3552 1.3545-4.5578 3.1808-5.3521 9.9202-0.0766 0.69508-0.16121 1.5663-0.41247 6.1039h-24.909c-0.0031 0.64186 0.13717-5.1702-2.8348-7.2153-4.3219-3.0769-4.5684-0.91535-4.9137-3.8594z" fill="#ee992d"/>
+   <rect x="59.72" y="154.61" width="24.904" height="7.3401"/>
+   <rect x="59.128" y="157.35" width="26.131" height="1.3363" fill="#fff"/>
+  </g>
+  <g fill="none" stroke="#000">
+   <g>
+    <path d="m61.01 139.48v24.786" stroke-width=".76617"/>
+    <path d="m65.553 126.54v37.727" stroke-width=".64876"/>
+    <path d="m69.885 112.73v51.536" stroke-width=".50377"/>
+   </g>
+   <path d="m74.374 100.9v63.368" stroke-width=".44718px"/>
+   <path d="m79 89.433v74.834" stroke-width=".385"/>
+   <path d="m83.321 77.805v86.462" stroke-width=".2294"/>
+  </g>
+  <g fill="#fff">
+   <circle cx="59.144" cy="139.1" r="2.3835"/>
+   <circle cx="63.509" cy="125.93" r="2.3835"/>
+   <circle cx="67.73" cy="113.13" r="2.3835"/>
+   <circle cx="72.234" cy="100.88" r="2.3835"/>
+   <circle cx="76.851" cy="88.896" r="2.3835"/>
+   <circle cx="81.25" cy="77.438" r="2.3835"/>
+  </g>
+  <g>
+   <ellipse transform="rotate(16.91)" cx="86.673" cy="114.49" rx="3.5098" ry="4.2522"/>
+   <ellipse transform="rotate(16.91)" cx="86.853" cy="100.51" rx="3.5098" ry="4.2522"/>
+   <ellipse transform="rotate(16.91)" cx="87.164" cy="86.592" rx="3.5098" ry="4.2522"/>
+   <ellipse transform="rotate(16.91)" cx="87.678" cy="73.991" rx="3.5098" ry="4.2522"/>
+   <ellipse transform="rotate(16.91)" cx="88.319" cy="61.154" rx="3.5098" ry="4.2522"/>
+   <ellipse transform="rotate(16.91)" cx="89.031" cy="47.901" rx="3.5098" ry="4.2522"/>
+  </g>
+ </g>
+</svg>

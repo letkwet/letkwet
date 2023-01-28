@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  @apply font-bold;
+}
+
+.chord-sheet {
+  @apply p-1;
+}
+
+.chord-sheet .paragraph {
+  @apply p-2 mb-4;
+}
+.chord-sheet .row {
+  @apply flex flex-row flex-wrap;
+}
+.chord-sheet .chord:after {
+  content: "\200b";
+}
+.chord-sheet .column {
+  @apply mr-1;
+}
+.chord-sheet .chord {
+  @apply cursor-pointer font-bold inline text-letkwet-500;
+}
+
+.chord-sheet .verse {
+  @apply border-l-2 border-letkwet-400;
+}
+
+.chord-sheet .chorus {
+  @apply border-l-2 border-green-400;
+}
