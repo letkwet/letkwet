@@ -3,6 +3,7 @@ node_modules
 /build
 /.svelte-kit
 /package
+/static/songs.json
 .env
 .env.*
 !.env.example
