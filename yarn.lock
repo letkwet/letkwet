@@ -630,11 +630,6 @@ import-meta-resolve@^3.0.0:
   resolved "https://registry.yarnpkg.com/import-meta-resolve/-/import-meta-resolve-3.0.0.tgz#94a6aabc623874fbc2f3525ec1300db71c6cbc11"
   integrity sha512-4IwhLhNNA8yy445rPjD/lWh++7hMDOml2eHtd58eG7h+qK3EryMuuRbsHGPikCoAgIkkDnckKfWSk2iDla/ejg==
 
-indexeddb-export-import@^2.1.5:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/indexeddb-export-import/-/indexeddb-export-import-2.1.5.tgz#ef2cf2372648b0e88c5bef1da16cff0dd8ffad2f"
-  integrity sha512-gS6gVzFTDuT+r7KyZ3yrzflC8HfktezxAGyImCpICGX5WemMhBLnGaZMkZ0KYj+9hwVAM3dmXMTYy/NvtKAFlQ==
-
 inflight@^1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/inflight/-/inflight-1.0.6.tgz#49bd6331d7d02d0c09bc910a1075ba8165b56df9"

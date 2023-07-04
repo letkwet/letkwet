@@ -5,9 +5,6 @@ const dev = process.argv.includes('dev');
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-    paths: {
-      base: dev ? '' : '/letkwet.github.io'
-    },
     appDir: 'internal',
 		adapter: adapter({
       pages: "build",

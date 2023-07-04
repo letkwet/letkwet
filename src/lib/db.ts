@@ -24,6 +24,7 @@ export interface ISong {
   key: string,
   artists: string[],
   album?: string,
+  title: string,
   lyrics: string
 }
 

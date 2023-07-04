@@ -61,7 +61,7 @@
     }
   }
 
-  const chordRegex = /(([A-G][\#b]?)([A-Za-z\d\#\/]{0,9}))/m;
+  const chordRegex = /(([A-G][\#b]?)([A-Za-z\d\#\/\(\)]{0,9}))/m;
 
   const chordCache: {
     [key: string]: any[];
@@ -85,6 +85,7 @@
       const value = elem.innerText;
       if (!chordCache[value]) {
         const [key, suffix] = parseChord(value);
+        console.log(key, suffix);
         const result = StandardGuitar.getChords(key, suffix);
 
         if (result.length > 0) {

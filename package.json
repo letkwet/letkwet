@@ -1,6 +1,6 @@
 {
 	"name": "letkwet",
-	"version": "0.0.1",
+	"version": "0.1.1",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -26,7 +26,6 @@
 	"type": "module",
 	"dependencies": {
 		"chordsheetjs": "^7.16.0",
-		"dexie": "^3.2.4",
-		"indexeddb-export-import": "^2.1.5"
+		"dexie": "^3.2.4"
 	}
 }

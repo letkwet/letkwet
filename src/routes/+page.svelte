@@ -12,7 +12,7 @@
   };
  */
 
-  let files: FileList;
+  /* let files: FileList;
 
   let song: string;
 
@@ -23,13 +23,10 @@
         file.text().then((s) => (song = s));
       }
     }
-  }
+  } */
+
 </script>
 
-{#if song}
-  <Song {song} />
-{:else}
-  <div class="h-40 px-4 py-10 text-gray-400">
-    Please search by song title or artist.
-  </div>
-{/if}
+<div class="h-40 px-4 py-10 text-gray-400">
+  Please search by song title or artist.
+</div>

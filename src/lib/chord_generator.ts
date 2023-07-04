@@ -23,6 +23,8 @@ const SUFFIXES = {
   "5": ["5"],
   "6": ["6"],
   "7": ["7"],
+  "9": ["9"],
+  add9: ["add9", "(9)"],
   maj7: ["ma7", "maj7", "M7"],
   min7: ["min7", "m7"],
   mM7: ["mM7", "m(M7)", "min(maj7)"],
@@ -44,6 +46,8 @@ export const StandardGuitar = {
     { suffix: SUFFIXES.aug, baseKey: "C", shape: [-1, 3, 2, 1, 1, 3] },
     { suffix: SUFFIXES["6"], baseKey: "C", shape: [-1, 3, 2, 2, 1, 0] },
     { suffix: SUFFIXES["7"], baseKey: "C", shape: [-1, 3, 2, 3, 1, 0] },
+    { suffix: SUFFIXES["9"], baseKey: "C", shape: [-1, 3, 2, 3, 3, -1] },
+    { suffix: SUFFIXES.add9, baseKey: "C", shape: [-1, 3, 2, 0, 3, 3] },
     { suffix: SUFFIXES.maj7, baseKey: "C", shape: [-1, 3, 2, 0, 0, 0] },
     { suffix: SUFFIXES.mM7, baseKey: "C", shape: [-1, 3, 1, 0, 0, 0] },
 
