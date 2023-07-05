@@ -15,7 +15,7 @@
   let artistQuery: PromiseExtended<string[]> | null = null;
 
   $: {
-    if (query.length >= 3) {
+    if (query.length > 1) {
       songQuery = db.songs.where('title')
         .startsWithIgnoreCase(query)
         .limit(10).toArray();

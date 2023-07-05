@@ -95,7 +95,7 @@
 <div>
   {#await bootstrapDb}
     <div class="text-letkwet-500 font-bold mt-40 mx-auto w-3/4 text-center">
-    သီခငျ်းများရယူနေပါသည်...
+        သီချင်းများ ရယူနေပါသည်
     </div>
   {:then}
     <Router {routes} />

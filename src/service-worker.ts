@@ -37,8 +37,9 @@ self.addEventListener('fetch', (event: any) => {
     const url = new URL(event.request.url);
     const cache = await caches.open(CACHE);
  
+    console.log(url.pathname);
     // `build`/`files` can always be served from the cache
-    if (ASSETS.includes(url.pathname)) {
+    if (!url.pathname.includes("songs.json") && ASSETS.includes(url.pathname)) {
       return cache.match(event.request);
     }
  
