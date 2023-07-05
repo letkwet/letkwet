@@ -108,7 +108,7 @@
     {#if artists}
       - 
     {#each artists as artist}
-      <a href={`/#/artist/${artist}`} class="text-letkwet-500">{artist}</a>
+      <a href={`#/artist/${artist}`} class="text-letkwet-500">{artist}</a>
         &nbsp;&nbsp;
     {/each}
     {/if}

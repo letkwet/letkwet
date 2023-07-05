@@ -5,14 +5,18 @@
   import Router from 'svelte-spa-router';
   import Search from '../components/Search.svelte';
 
+  import Song from '../components/Song.svelte';
+
   import SongPage from '../pages/SongPage.svelte';
   import ArtistPage from '../pages/ArtistPage.svelte';
   import HomePage from '../pages/HomePage.svelte';
+  import FilePage from '../pages/FilePage.svelte';
 
   const routes = {
-    '/': HomePage,
     '/artist/:artist': ArtistPage,
-    '/song/:song': SongPage
+    '/song/:song': SongPage,
+    '/file': FilePage,
+    '*': HomePage,
   };
 
   function debounce(timeout = 400){
@@ -25,6 +29,8 @@
 
   let queryInput = "";
   let query = "";
+
+  let pickedSong: string;
 
   const debouncedSearch = debounce();
   $: debouncedSearch(() => query = queryInput);
@@ -69,7 +75,7 @@
 <main class="max-w-lg mx-auto">
 <nav>
   <div class="flex gap-4 py-2 px-4 items-center">
-    <a href="/">
+    <a href="#">
       <img src="{base}/letkwet.svg" class="w-8" alt="Letkwet" />
     </a>
     <div class="grow relative">
@@ -82,6 +88,7 @@
           on:click={clearSearch}
           class="absolute right-2 top-1 text-gray-400 text-lg">&#x1F5D9;</button>
     </div>
+  <a href="#/file" title="Load local chord pro file" class="text-xl">&#x1F4C2;</a>
   </div>
 </nav>
 <Search {query} on:selected={clearSearch} />
