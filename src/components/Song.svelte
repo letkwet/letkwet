@@ -18,7 +18,7 @@
     cont: HTMLElement,
     scrollY: number,
     scrollSpeed = 0,
-    scrollInterval: NodeJS.Timeout;
+    scrollInterval: number;
 
   $: {
     if (song) {
@@ -85,7 +85,6 @@
       const value = elem.innerText;
       if (!chordCache[value]) {
         const [key, suffix] = parseChord(value);
-        console.log(key, suffix);
         const result = StandardGuitar.getChords(key, suffix);
 
         if (result.length > 0) {
@@ -107,7 +106,11 @@
   <div class="p-2">
     <span class="text-bold">{title}</span>
     {#if artists}
-      - <span class="text-gray-500">{artists.join(", ")}</span>
+      - 
+    {#each artists as artist}
+      <a href={`/#/artist/${artist}`} class="text-letkwet-500">{artist}</a>
+        &nbsp;&nbsp;
+    {/each}
     {/if}
   </div>
   <div class="flex" style="align-items:stretch;">

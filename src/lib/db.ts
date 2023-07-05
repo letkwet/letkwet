@@ -13,8 +13,9 @@ export class LetkwetDb extends Dexie {
     });
   }
 
-  updateSongs(songs: ISong[], last_modified: number): Promise<any> {
+  async updateSongs(songs: ISong[], last_modified: number): Promise<any> {
     const addingSongs = this.songs.bulkPut(songs);
+    await this._meta.clear();
     const updatingMeta = this._meta.add({last_modified});
     return Promise.all([addingSongs, updatingMeta]);
   }

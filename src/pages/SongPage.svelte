@@ -4,9 +4,7 @@
 
     export let params: { song: string | null} = { song: null };
 
-    console.log(params);
-
-    let songQuery = params.song !== null 
+    $: songQuery = params.song !== null 
       ? db.songs.get(params.song) : null;
     
 </script>

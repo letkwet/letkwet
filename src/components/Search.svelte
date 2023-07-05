@@ -34,49 +34,53 @@
 </script>
 
 {#if songQuery != null && artistQuery != null}
-<div class="shadow-lg rounded absolute top-20 p-6 bg-white max-w-lg">
-    {#await songQuery then songs}
-    <div>
-        <h3 class="text-md font-bold my-4">
-          Songs
-        </h3>
-        {#if songs && songs.length > 0}
-          <div class="flex flex-col">
-            {#each songs as song}
-            <a href={`#/song/${song.key}`} on:click={selected} class="border-t-2 py-4">
-            {song.title} 
-            <br />
-            (<span class="text-letkwet-600">{song.artists.join(", ")}</span>)
-            </a>
-            {/each}
-          </div>
-        {:else}
-          <span class="text-gray-400">
-          No song title starting with "{query}"
-          </span>
-        {/if}
-    </div>
-    {/await}
-    {#await artistQuery then artists}
-    <div>
-        <h3 class="text-md font-bold my-4">
-          Artists
-        </h3>
-        {#if artists && artists.length > 0}
-          <div class="flex flex-col">
-            {#each artists as artist}
-            <a href={`#/artist/${artist}`} on:click={selected} class="border-t-2 py-4">
-            {artist} 
-            </a>
-            {/each}
-          </div>
-        {:else}
-          <span class="text-gray-400">
-          No artist name starting with "{query}"
-          </span>
-        {/if}
-    </div>
-    {/await}
+<div class="relative z-10">
+  <div class="shadow border rounded absolute top-0 left-4 right-4 bg-white max-w-lg">
+      {#await songQuery then songs}
+      <div>
+          <h3 class="text-md font-bold my-4 mx-8">
+            သီချင်းများ
+          </h3>
+          {#if songs && songs.length > 0}
+            <div class="flex flex-col">
+              {#each songs as song}
+              <a href={`#/song/${song.key}`} on:click={selected}
+                  class="border-t py-4 px-6">
+              &#x266b; {song.title} 
+              <br />
+              (<span class="text-letkwet-600">{song.artists.join(", ")}</span>)
+              </a>
+              {/each}
+            </div>
+          {:else}
+            <div class="text-gray-400 px-6 py-4">
+            "{query}" အမည်ပါ သီချင်းမတွေ့ပါ
+            </div>
+          {/if}
+      </div>
+      {/await}
+      {#await artistQuery then artists}
+      <div>
+          <h3 class="text-md font-bold my-4 mx-8">
+            အဆိုတော်များ
+          </h3>
+          {#if artists && artists.length > 0}
+            <div class="flex flex-col">
+              {#each artists as artist}
+              <a href={`#/artist/${artist}`} on:click={selected}
+                  class="border-t py-4 px-6 text-letkwet-400 font-bold">
+               &#x1F399; {artist} 
+              </a>
+              {/each}
+            </div>
+          {:else}
+            <div class="text-gray-400 px-6 py-4">
+            "{query}" အမည်ပါအဆိုတော် မတွေ့ပါ
+            </div>
+          {/if}
+      </div>
+      {/await}
 
+  </div>
 </div>
 {/if}
