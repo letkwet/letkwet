@@ -26,6 +26,7 @@ const SUFFIXES = {
   "9": ["9"],
   add9: ["add9", "(9)"],
   maj7: ["ma7", "maj7", "M7"],
+  min6: ["min6", "m6"],
   min7: ["min7", "m7"],
   mM7: ["mM7", "m(M7)", "min(maj7)"],
 }
@@ -40,15 +41,15 @@ export const StandardGuitar = {
   chordShapes: [
     // C Shapes
     { suffix: SUFFIXES.maj, baseKey: "C", shape: [-1, 3, 2, 0, 1, 0] },
-    // { name: "Cshape", suffix: "min", baseKey: "C", shape: [-1, 3, 1, 0, 1, -1]},
     { suffix: SUFFIXES.sus2, baseKey: "C", shape: [-1, 3, 0, 0, 1, 0] },
     { suffix: SUFFIXES.sus4, baseKey: "C", shape: [-1, 3, 3, 0, 1, 1] },
     { suffix: SUFFIXES.aug, baseKey: "C", shape: [-1, 3, 2, 1, 1, 3] },
     { suffix: SUFFIXES["6"], baseKey: "C", shape: [-1, 3, 2, 2, 1, 0] },
     { suffix: SUFFIXES["7"], baseKey: "C", shape: [-1, 3, 2, 3, 1, 0] },
     { suffix: SUFFIXES["9"], baseKey: "C", shape: [-1, 3, 2, 3, 3, -1] },
-    { suffix: SUFFIXES.add9, baseKey: "C", shape: [-1, 3, 2, 0, 3, 3] },
+    { suffix: SUFFIXES.add9, baseKey: "C", shape: [-1, 3, 2, 0, 3, 0] },
     { suffix: SUFFIXES.maj7, baseKey: "C", shape: [-1, 3, 2, 0, 0, 0] },
+    { suffix: SUFFIXES.min6, baseKey: "C", shape: [-1, 3, 1, 2, 1, 3] },
     { suffix: SUFFIXES.mM7, baseKey: "C", shape: [-1, 3, 1, 0, 0, 0] },
 
     // A Shapes
@@ -56,6 +57,7 @@ export const StandardGuitar = {
     { suffix: SUFFIXES.min, baseKey: "A", shape: [-1, 0, 2, 2, 1, 0] },
     { suffix: SUFFIXES.sus2, baseKey: "A", shape: [-1, 0, 2, 2, 0, 0] },
     { suffix: SUFFIXES.sus4, baseKey: "A", shape: [-1, 0, 2, 2, 3, 0] },
+    { suffix: SUFFIXES.add9, baseKey: "A", shape: [-1, 0, 2, 4, 2, -1] },
     { suffix: SUFFIXES.dim, baseKey: "A", shape: [-1, 0, 1, 2, 1, 0] },
     { suffix: SUFFIXES.halfDim, baseKey: "A", shape: [-1, 0, 1, 0, 1, -1] },
     { suffix: SUFFIXES.aug, baseKey: "A", shape: [-1, 0, 3, 2, 2, 0] },
@@ -63,6 +65,7 @@ export const StandardGuitar = {
     { suffix: SUFFIXES["6"], baseKey: "A", shape: [-1, 0, 2, 2, 2, 2] },
     { suffix: SUFFIXES["7"], baseKey: "A", shape: [-1, 0, 2, 0, 2, 0] },
     { suffix: SUFFIXES.maj7, baseKey: "A", shape: [-1, 0, 2, 1, 2, 0] },
+    { suffix: SUFFIXES.min6, baseKey: "A", shape: [-1, -1, 2, 2, 1, 2] },
     { suffix: SUFFIXES.min7, baseKey: "A", shape: [-1, 0, 2, 0, 1, 0] },
     { suffix: SUFFIXES.mM7, baseKey: "A", shape: [-1, 0, 2, 1, 1, 0] },
 
@@ -71,8 +74,10 @@ export const StandardGuitar = {
     { suffix: SUFFIXES.min, baseKey: "G", shape: [3, 1, 0, 0, -1, -1] },
     { suffix: SUFFIXES.sus2, baseKey: "G", shape: [3, 2, 0, 2, 0, 3] },
     { suffix: SUFFIXES.sus4, baseKey: "G", shape: [3, 2, 0, 0, 1, 3] },
+    { suffix: SUFFIXES.add9, baseKey: "G", shape: [-1, 2, 0, 2, 0, -1] },
     { suffix: SUFFIXES["6"], baseKey: "G", shape: [3, 2, 0, 0, 1, 0] },
     { suffix: SUFFIXES["7"], baseKey: "G", shape: [3, 2, 0, 0, 0, 1] },
+    { suffix: SUFFIXES.min6, baseKey: "G", shape: [3, 1, 2, 3, -1, -1] },
     { suffix: SUFFIXES.maj7, baseKey: "G", shape: [3, 2, 0, 0, 0, 2] },
 
     // E Shapes
@@ -101,6 +106,7 @@ export const StandardGuitar = {
     { suffix: SUFFIXES["6"], baseKey: "D", shape: [-1, -1, 0, 2, 0, 2] },
     { suffix: SUFFIXES["7"], baseKey: "D", shape: [-1, -1, 0, 2, 1, 2] },
     { suffix: SUFFIXES.maj7, baseKey: "D", shape: [-1, -1, 0, 2, 2, 2] },
+    { suffix: SUFFIXES.min6, baseKey: "D", shape: [-1, -1, 0, 2, 0, 1] },
     { suffix: SUFFIXES.min7, baseKey: "D", shape: [-1, -1, 0, 2, 1, 1] },
     { suffix: SUFFIXES.mM7, baseKey: "D", shape: [-1, -1, 0, 2, 2, 1] },
   ],
@@ -110,14 +116,20 @@ export const StandardGuitar = {
     if (!key) return [];
     return this.chordShapes.filter(s => s.suffix.includes(suffix))
       .map(({ baseKey, shape }): ChordInfo => {
-        let fretOffset = TONES.indexOf(key) - TONES.indexOf(baseKey);
-        if (fretOffset < 0) fretOffset = TONES.length + fretOffset;
-        return {
-          baseFret: fretOffset,
-          frets: fretOffset === 0
-            ? shape
-            : shape.map((note) => note >= 0 ? note + 1 : note)
-        };
+        let baseFret = TONES.indexOf(key) - TONES.indexOf(baseKey);
+        if (baseFret < 0) baseFret = TONES.length + baseFret;
+        const frets = baseFret === 0
+          ? shape
+          : shape.map((note) => note >= 0 ? note + 1 : note);
+
+        // Detect barre chord to add barre
+        const leftNotes = frets.filter(n => n >= 0).sort();
+        const barres = [];
+        if (leftNotes[0] > 0 && leftNotes[0] === leftNotes[1]) {
+          barres.push(leftNotes[0]);
+        }
+
+        return { baseFret, frets, barres };
       })
       .sort((a, b) => (a.baseFret || 0) - (b.baseFret || 0));
   }

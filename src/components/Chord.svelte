@@ -19,7 +19,7 @@
   const dispatch = createEventDispatcher();
 
   function handleClick(e: MouseEvent) {
-    dispatch("clickPos", {
+    dispatch("click-pos", {
       x: e.offsetX / svg.clientWidth,
       y: e.offsetY / svg.clientHeight,
     });
