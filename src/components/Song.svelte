@@ -1,12 +1,12 @@
 <script lang="ts">
-  import chordsheetjs from "chordsheetjs";
+  import * as chordsheetjs from "chordsheetjs";
   import ChordModal from "./ChordModal.svelte";
 
   import type { ChordInfo, Instrument } from "../components/constants";
 
   import { StandardGuitar } from "$lib/chord_generator";
 
-  const { ChordProParser, HtmlDivFormatter } = chordsheetjs;
+  const { ChordProParser, HtmlDivFormatter, Chord } = chordsheetjs;
 
   export let song: string;
 

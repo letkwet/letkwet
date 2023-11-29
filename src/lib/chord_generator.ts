@@ -27,7 +27,7 @@ const SUFFIXES = {
   add9: ["add9", "(9)"],
   maj7: ["ma7", "maj7", "M7"],
   min7: ["min7", "m7"],
-  mM7: ["mM7", "m(M7)", "min(maj7)"],
+  mM7: ["mM7", "m(M7)", "m(ma7)", "min(maj7)"],
 }
 
 export const StandardGuitar = {
