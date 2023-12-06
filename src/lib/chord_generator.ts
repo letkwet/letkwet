@@ -75,7 +75,7 @@ export const StandardGuitar = {
     { suffix: SUFFIXES.sus2, baseKey: "G", shape: [3, 2, 0, 2, 0, 3] },
     { suffix: SUFFIXES.sus4, baseKey: "G", shape: [3, 2, 0, 0, 1, 3] },
     { suffix: SUFFIXES.add9, baseKey: "G", shape: [-1, 2, 0, 2, 0, -1] },
-    { suffix: SUFFIXES["6"], baseKey: "G", shape: [3, 2, 0, 0, 1, 0] },
+    { suffix: SUFFIXES["6"], baseKey: "G", shape: [3, 2, 0, 2, 3, 0] },
     { suffix: SUFFIXES["7"], baseKey: "G", shape: [3, 2, 0, 0, 0, 1] },
     { suffix: SUFFIXES.min6, baseKey: "G", shape: [3, 1, 2, 3, -1, -1] },
     { suffix: SUFFIXES.maj7, baseKey: "G", shape: [3, 2, 0, 0, 0, 2] },
@@ -83,7 +83,7 @@ export const StandardGuitar = {
     // E Shapes
     { suffix: SUFFIXES.maj, baseKey: "E", shape: [0, 2, 2, 1, 0, 0] },
     { suffix: SUFFIXES.min, baseKey: "E", shape: [0, 2, 2, 0, 0, 0] },
-    { suffix: SUFFIXES.sus2, baseKey: "E", shape: [0, 2, 4, 1, 0, 0] },
+    // { suffix: SUFFIXES.sus2, baseKey: "E", shape: [0, 2, 4, 1, 0, 0] },
     { suffix: SUFFIXES.sus4, baseKey: "E", shape: [0, 2, 2, 2, 0, 0] },
     { suffix: SUFFIXES.dim, baseKey: "E", shape: [0, 1, 2, 0, 4, 0] },
     { suffix: SUFFIXES.halfDim, baseKey: "E", shape: [0, 1, 0, 0, 3, 0] },

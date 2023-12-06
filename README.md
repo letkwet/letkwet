@@ -1,7 +1,12 @@
 # Letkwet
 
-A simple chordpro reader web app. See [`ChordPro`](https://chordpro.org).
+A simple [chordpro](https://chordpro.org) based song book web app
+that can be hosted on github
 
-Visit page - [`letkwet`](https://nayminlwin.github.io/letkwet.github.io).
+Visit page for an demo of Myanmar song book - [`letkwet`](https://letkwet.github.io).
 
-You need to download the chordpro files first to view on the app.
+See <https://github.com/letkwet/mm-songs-chordpro> for generating
+a song book database from chordpro files.
+
+See <https://github.com/letkwet/letkwet.github.io> for generated
+static web assets and a song database `songs.json`.
