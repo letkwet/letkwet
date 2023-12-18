@@ -24,10 +24,15 @@
           currentCount += 1;
         }
       }
+      if (currentArtist && currentCount > 0) {
+        artistList.push({
+          artist: currentArtist,
+          songCount: currentCount,
+        });
+      }
       artistList.sort(({ songCount: a }, { songCount: b }) => b - a);
       return artistList;
     });
-  console.log(artistAggregate);
 </script>
 
 <div>
