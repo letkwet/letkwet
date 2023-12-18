@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Icon, MusicalNote } from "svelte-hero-icons";
     import db from "$lib/db";
 
     export let params: { artist: string | null} = { artist: null };
@@ -19,7 +20,11 @@
     <div class="flex flex-col">
       {#each songs as song}
         <a href={`#/song/${song.key}`} class="text-letkwet-600 border-t-2 py-4 px-8">
-        &#x266b; {song.title} 
+                  <Icon
+                    src={MusicalNote}
+                    class="w-6 inline mr-2 text-gray-500"
+                  />
+                  {song.title}
         </a>
       {/each}
     </div>

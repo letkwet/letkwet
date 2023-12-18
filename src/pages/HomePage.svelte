@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { Icon, Microphone } from "svelte-hero-icons";
   import db from "$lib/db";
 
-  let artistAggregate = db.songs.orderBy("artists")
+  let artistAggregate = db.songs
+    .orderBy("artists")
     .keys()
     .then((artists) => {
       // let artistsMap: { [artist: string]: number } = {};
@@ -37,9 +39,12 @@
           href={`#/artist/${artist}`}
           class="text-letkwet-600 border-t-2 py-4 px-8"
         >
-          &#x1F399; {artist} 
-          <div class="inline-block bg-slate-300 text-black font-bold rounded-full p-2 leading-none text-sm ml-2">
-          {songCount}
+          <Icon src={Microphone} class="w-6 inline mr-2 text-gray-500" />
+          {artist}
+          <div
+            class="inline-block bg-slate-300 text-black font-bold rounded-full p-2 leading-none text-sm ml-2"
+          >
+            {songCount}
           </div>
         </a>
       {/each}
