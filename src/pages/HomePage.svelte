@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Icon, Microphone, MusicalNote } from 'svelte-hero-icons';
-	import { artistsAggregate, getRecent, type IRecent } from '$lib/db';
+	import { artistsAggregate, getRecent } from '$lib/db';
 
 	let artistAggregate = $state(artistsAggregate());
 	let recent = $state(getRecent(10));
@@ -27,9 +27,12 @@
 
 	<h3 class="text-lg font-bold my-4 px-10">အဆိုတော်များ</h3>
 	{#await artistAggregate then artists}
-		<div class="flex flex-col">
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-6">
 			{#each artists as { artist, songCount } (artist)}
-				<a href={`#/artist/${artist}`} class="text-letkwet-600 border-t-2 py-4 px-8">
+				<a
+					href={`#/artist/${artist}`}
+					class="text-letkwet-600 border rounded p-4 hover:bg-letkwet-50"
+				>
 					<Icon src={Microphone} class="w-6 inline mr-2 text-gray-500" />
 					{artist}
 					<div

@@ -102,6 +102,22 @@
 			open = true;
 		}
 	}
+	function isChordAvailable(chord: string): boolean {
+		if (/^N\.?C\.?$/i.test(chord)) return false;
+
+		const def = activeDefines.get(chord) ?? activeDefines.get(chord.toLowerCase());
+		if (def?.info) return true;
+		if (def?.noDiagram) return false;
+
+		const cached = chordCache.get(chord);
+		if (cached !== undefined) return cached.length > 0;
+
+		const [key, suffix] = parseChordName(chord);
+		const result = StandardGuitar.getChords(key, suffix);
+		chordCache.set(chord, result);
+		return result.length > 0;
+	}
+
 </script>
 
 <svelte:window bind:scrollY />
@@ -126,24 +142,26 @@
 							<div class="paragraph-label font-bold text-letkwet-600 mb-1">{section.label}</div>
 						{/if}
 						{#each section.lines as line}
-							<div class="row flex flex-row flex-wrap break-inside-avoid">
+							<div class="row flex flex-row flex-wrap">
 								{#each line as col}
-									<div class="column mr-1">
-										{#if col.chord}
-											<span
-												class="chord cursor-pointer font-bold inline text-letkwet-500"
-												onclick={() => loadChord(col.chord ?? '')}
-												onkeydown={(e) => {
-													if (e.key === 'Enter' || e.key === ' ') loadChord(col.chord ?? '');
-												}}
-												role="button"
-												aria-label={`Chord ${col.chord}`}
-												tabindex="0"
-											>
-												{col.chord}
-											</span>
-										{/if}
-										<span class="lyrics inline">{col.lyric}</span>
+									<div class="column mr-1 flex flex-col break-inside-avoid">
+												{#if col.chord}
+													<span
+														class="chord cursor-pointer font-bold inline {isChordAvailable(col.chord ?? '') ? 'text-letkwet-500' : 'text-gray-400'}"
+														onclick={() => loadChord(col.chord ?? '')}
+														onkeydown={(e) => {
+															if (e.key === 'Enter' || e.key === ' ') loadChord(col.chord ?? '');
+														}}
+														role="button"
+														aria-label={`Chord ${col.chord}`}
+														tabindex="0"
+													>
+														{col.chord}
+													</span>
+												{:else}
+													<span class="chord" aria-hidden="true"></span>
+												{/if}
+													<span class="lyrics inline">{col.lyric}</span>
 									</div>
 								{/each}
 							</div>

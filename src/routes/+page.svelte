@@ -70,7 +70,7 @@
 	})();
 </script>
 
-<main class="max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto">
+<main class="max-w-lg md:max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto">
 	<nav>
 		<div class="flex gap-4 py-2 px-4 items-center">
 			<a href="#/" aria-label="Home">

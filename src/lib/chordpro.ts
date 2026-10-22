@@ -253,18 +253,25 @@ function buildDefine(name: string, arg: string, defines: DefineMap): ChordDefini
 function parseInlineLine(line: string): Line {
 	const columns: ChordColumn[] = [];
 	let lyricBuffer = '';
+	let current: ChordColumn | null = null;
 	let i = 0;
+
 	while (i < line.length) {
 		if (line[i] === '[') {
 			const close = line.indexOf(']', i);
 			if (close > i) {
 				if (lyricBuffer) {
-					columns.push({ lyric: lyricBuffer });
+					if (current) {
+						current.lyric += lyricBuffer;
+					} else {
+						columns.push({ lyric: lyricBuffer });
+					}
 					lyricBuffer = '';
 				}
 				const chord = line.slice(i + 1, close).trim();
-				if (chord) {
-					columns.push({ chord, lyric: '' });
+				current = chord ? { chord, lyric: '' } : null;
+				if (current) {
+					columns.push(current);
 				}
 				i = close + 1;
 				continue;
@@ -273,9 +280,19 @@ function parseInlineLine(line: string): Line {
 		lyricBuffer += line[i];
 		i++;
 	}
-	if (lyricBuffer || columns.length === 0) {
-		columns.push({ lyric: lyricBuffer });
+
+	if (lyricBuffer) {
+		if (current) {
+			current.lyric += lyricBuffer;
+		} else {
+			columns.push({ lyric: lyricBuffer });
+		}
 	}
+
+	if (columns.length === 0) {
+		columns.push({ lyric: '' });
+	}
+
 	return columns;
 }
 
