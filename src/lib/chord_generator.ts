@@ -1,8 +1,8 @@
 import type { ChordInfo } from "../components/constants";
 
-const TONES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+export const TONES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
 
-const FLAT_KEY_MAPS: {
+export const FLAT_KEY_MAPS: {
   [key: string]: string;
 } = {
   Db: "C#",
@@ -113,7 +113,7 @@ export const StandardGuitar = {
 
   getChords(key: string, suffix = "maj"): ChordInfo[] {
     if (key.includes('b')) { key = FLAT_KEY_MAPS[key] }
-    if (!key) return [];
+    if (!key || !TONES.includes(key)) return [];
     return this.chordShapes.filter(s => s.suffix.includes(suffix))
       .map(({ baseKey, shape }): ChordInfo => {
         let baseFret = TONES.indexOf(key) - TONES.indexOf(baseKey);

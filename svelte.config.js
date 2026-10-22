@@ -1,30 +1,23 @@
 import adapter from '@sveltejs/adapter-static';
-import preprocess from "svelte-preprocess";
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-// const dev = process.argv.includes('dev');
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-    appDir: 'internal',
+		appDir: 'internal',
 		adapter: adapter({
-      pages: "build",
-      assets: "build",
-      fallback: null,
-      precompess: false,
-      strict: true
-    })
+			pages: 'build',
+			assets: 'build',
+			fallback: null,
+			strict: true
+		})
 	},
-	preprocess: [
-		preprocess({
-			postcss: true,
-		}),
-	],
+	preprocess: [vitePreprocess()],
 	vitePlugin: {
-    inspector: {
-      holdMode: true,
-    }
-	}		
-
+		inspector: {
+			holdMode: true
+		}
+	}
 };
 
 export default config;

@@ -1,20 +1,48 @@
 <script lang="ts">
-    import db from "$lib/db";
-    import Song from "../components/Song.svelte";
+	import { getSong, recordRecent, type ISong } from '$lib/db';
+	import Song from '../components/Song.svelte';
 
-    export let params: { song: string | null} = { song: null };
+	interface Props {
+		params: { song: string | null };
+	}
 
-    $: songQuery = params.song !== null 
-      ? db.songs.get(params.song) : null;
-    
+	let { params }: Props = $props();
+
+	let song = $state<ISong | null>(null);
+	let notFound = $state(false);
+
+	$effect(() => {
+		const key = params.song;
+		if (!key) {
+			song = null;
+			notFound = true;
+			return;
+		}
+
+		let cancelled = false;
+		notFound = false;
+		getSong(key).then((s) => {
+			if (cancelled) return;
+			song = s ?? null;
+			notFound = !s;
+		});
+
+		return () => {
+			cancelled = true;
+		};
+	});
+
+	$effect(() => {
+		if (song) {
+			recordRecent({ key: song.key, title: song.title, artists: song.artists }).catch(() => {});
+		}
+	});
 </script>
 
 <div>
-  {#if songQuery}
-  {#await songQuery then song}
-    {#if song}
-    <Song song={song.lyrics} />
-    {/if}
-  {/await}
-  {/if}
+	{#if song}
+		<Song song={song.lyrics} />
+	{:else if notFound}
+		<div class="text-gray-400 text-center mt-20">သီချင်းမတွေ့ပါ</div>
+	{/if}
 </div>

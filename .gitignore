@@ -4,6 +4,7 @@ node_modules
 /.svelte-kit
 /package
 /static/songs.json
+/songs.json
 .env
 .env.*
 !.env.example

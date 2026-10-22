@@ -1,0 +1,18 @@
+{
+	"name": "Letkwet",
+	"short_name": "Letkwet",
+	"description": "မြန်မာသီချင်းလက်ကွက်များ - offline Myanmar songbook",
+	"start_url": ".",
+	"scope": ".",
+	"display": "standalone",
+	"background_color": "#FDF6EC",
+	"theme_color": "#EE992D",
+	"icons": [
+		{
+			"src": "letkwet.svg",
+			"sizes": "any",
+			"type": "image/svg+xml",
+			"purpose": "any"
+		}
+	]
+}
