@@ -128,14 +128,14 @@
 		{#if parsed.song.artists.length > 0}
 			-
 			{#each parsed.song.artists as artist}
-				<a href={`#/artist/${artist}`} class="text-letkwet-700 font-bold">{artist}</a>
+				<a href={`#/artist/${artist}`} class="text-letkwet-600 font-bold">{artist}</a>
 				&nbsp;&nbsp;
 			{/each}
 		{/if}
 	</div>
 	<div class="flex" style="align-items:stretch;">
 		<article class="grow" class:hidelyrics class:hidechords>
-			<div class="chord-sheet columns-sm">
+			<div class="chord-sheet columns-sm min-h-96">
 				{#each songView.sections as section}
 					<div class="paragraph {section.type} {section.label ? 'labeled' : ''} mb-4">
             {#if section.type === "comment"}
