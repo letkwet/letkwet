@@ -73,7 +73,7 @@
 
 <main class="max-w-lg md:max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto">
 	<nav>
-		<div class="flex gap-4 py-2 px-4 items-center">
+		<div class="flex gap-4 py-2 px-4 items-center max-w-lg">
 			<a href="#/" aria-label="Home">
 				<img src="{base}/letkwet.svg" class="w-8" alt="Letkwet" />
 			</a>

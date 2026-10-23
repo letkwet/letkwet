@@ -31,7 +31,7 @@
 			{#each artists as { artist, songCount } (artist)}
 				<a
 					href={`#/artist/${artist}`}
-					class="text-letkwet-600 border rounded p-4 hover:bg-letkwet-50"
+					class="text-letkwet-600 font-bold border rounded p-4 hover:bg-letkwet-50"
 				>
 					<Icon src={Microphone} class="w-6 inline mr-2 text-gray-500" />
 					{artist}

@@ -128,14 +128,14 @@
 		{#if parsed.song.artists.length > 0}
 			-
 			{#each parsed.song.artists as artist}
-				<a href={`#/artist/${artist}`} class="text-letkwet-500">{artist}</a>
+				<a href={`#/artist/${artist}`} class="text-letkwet-700 font-bold">{artist}</a>
 				&nbsp;&nbsp;
 			{/each}
 		{/if}
 	</div>
 	<div class="flex" style="align-items:stretch;">
 		<article class="grow" class:hidelyrics class:hidechords>
-			<div class="chord-sheet columns-md">
+			<div class="chord-sheet columns-sm">
 				{#each songView.sections as section}
 					<div class="paragraph {section.type} {section.label ? 'labeled' : ''} mb-4">
             {#if section.type === "comment"}
@@ -149,12 +149,12 @@
                 <div class="paragraph-label font-bold text-letkwet-700 mb-1">{section.label}</div>
               {/if}
               {#each section.lines as line}
-                <div class="row flex flex-row flex-wrap">
+                <div class="break-inside-avoid row flex flex-row flex-wrap">
                   {#each line as col}
-                    <div class="column mr-1 flex flex-col break-inside-avoid min-w-10">
+                    <div class="column mr-1 flex flex-col">
                           {#if col.chord}
                             <span
-                              class="chord cursor-pointer font-bold text-xs inline {isChordAvailable(col.chord ?? '') ? 'text-letkwet-500' : 'text-gray-400'}"
+                              class="chord cursor-pointer font-bold text-xs inline min-w-8 {isChordAvailable(col.chord ?? '') ? 'text-letkwet-500' : 'text-gray-400'}"
                               onclick={() => loadChord(col.chord ?? '')}
                               onkeydown={(e) => {
                                 if (e.key === 'Enter' || e.key === ' ') loadChord(col.chord ?? '');
