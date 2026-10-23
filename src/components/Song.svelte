@@ -135,37 +135,45 @@
 	</div>
 	<div class="flex" style="align-items:stretch;">
 		<article class="grow" class:hidelyrics class:hidechords>
-			<div class="chord-sheet md:columns-2 xl:columns-3 md:gap-8 lg:gap-10">
+			<div class="chord-sheet columns-md">
 				{#each songView.sections as section}
 					<div class="paragraph {section.type} {section.label ? 'labeled' : ''} mb-4">
-						{#if section.label}
-							<div class="paragraph-label font-bold text-letkwet-600 mb-1">{section.label}</div>
-						{/if}
-						{#each section.lines as line}
-							<div class="row flex flex-row flex-wrap">
-								{#each line as col}
-									<div class="column mr-1 flex flex-col break-inside-avoid">
-												{#if col.chord}
-													<span
-														class="chord cursor-pointer font-bold inline {isChordAvailable(col.chord ?? '') ? 'text-letkwet-500' : 'text-gray-400'}"
-														onclick={() => loadChord(col.chord ?? '')}
-														onkeydown={(e) => {
-															if (e.key === 'Enter' || e.key === ' ') loadChord(col.chord ?? '');
-														}}
-														role="button"
-														aria-label={`Chord ${col.chord}`}
-														tabindex="0"
-													>
-														{col.chord}
-													</span>
-												{:else}
-													<span class="chord" aria-hidden="true"></span>
-												{/if}
-													<span class="lyrics inline">{col.lyric}</span>
-									</div>
-								{/each}
-							</div>
-						{/each}
+            {#if section.type === "comment"}
+              {#each section.lines as line}
+                  {#each line as col}
+                  <span class="inline">{col.lyric}</span>
+                  {/each}
+              {/each}
+            {:else}
+              {#if section.label}
+                <div class="paragraph-label font-bold text-letkwet-700 mb-1">{section.label}</div>
+              {/if}
+              {#each section.lines as line}
+                <div class="row flex flex-row flex-wrap">
+                  {#each line as col}
+                    <div class="column mr-1 flex flex-col break-inside-avoid min-w-10">
+                          {#if col.chord}
+                            <span
+                              class="chord cursor-pointer font-bold text-xs inline {isChordAvailable(col.chord ?? '') ? 'text-letkwet-500' : 'text-gray-400'}"
+                              onclick={() => loadChord(col.chord ?? '')}
+                              onkeydown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') loadChord(col.chord ?? '');
+                              }}
+                              role="button"
+                              aria-label={`Chord ${col.chord}`}
+                              tabindex="0"
+                            >
+                              {col.chord}
+                            </span>
+                          {:else}
+                            <span class="chord text-xs" aria-hidden="true"></span>
+                          {/if}
+                            <span class="lyrics inline">{col.lyric}</span>
+                    </div>
+                  {/each}
+                </div>
+              {/each}
+            {/if}
 					</div>
 				{/each}
 			</div>
