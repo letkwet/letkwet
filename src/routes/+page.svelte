@@ -31,7 +31,8 @@
 
 	const debouncedSearch = debounce();
 	$effect(() => {
-		debouncedSearch(() => (query = queryInput));
+		const value = queryInput;
+		debouncedSearch(() => (query = value));
 	});
 
 	function clearSearch() {
