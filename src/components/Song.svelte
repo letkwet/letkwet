@@ -44,6 +44,7 @@
 	let cont: HTMLElement;
 	let scrollY: number = $state(0);
 	let scrollSpeed = $state(0);
+	let columnMode = $state(3);
 
 	$effect(() => {
 		if (scrollSpeed > 0 && cont) {
@@ -135,7 +136,7 @@
 	</div>
 	<div class="flex" style="align-items:stretch;">
 		<article class="grow" class:hidelyrics class:hidechords>
-			<div class="chord-sheet columns-sm min-h-96">
+			<div class="chord-sheet gap-8" class:sm:columns-2={columnMode >= 2} class:lg:columns-3={columnMode >= 3}>
 				{#each songView.sections as section}
 					<div class="paragraph {section.type} {section.label ? 'labeled' : ''} mb-4">
             {#if section.type === "comment"}
@@ -154,7 +155,7 @@
                     <div class="column mr-1 flex flex-col">
                           {#if col.chord}
                             <span
-                              class="chord cursor-pointer font-bold text-xs inline min-w-8 {isChordAvailable(col.chord ?? '') ? 'text-letkwet-500' : 'text-gray-400'}"
+                              class="chord cursor-pointer font-bold text-sm inline min-w-8 {isChordAvailable(col.chord ?? '') ? 'text-letkwet-500' : 'text-gray-400'}"
                               onclick={() => loadChord(col.chord ?? '')}
                               onkeydown={(e) => {
                                 if (e.key === 'Enter' || e.key === ' ') loadChord(col.chord ?? '');
@@ -166,7 +167,7 @@
                               {col.chord}
                             </span>
                           {:else}
-                            <span class="chord text-xs" aria-hidden="true"></span>
+                            <span class="chord text-sm" aria-hidden="true"></span>
                           {/if}
                             <span class="lyrics inline">{col.lyric}</span>
                     </div>
@@ -199,12 +200,20 @@
 					class:border-2={hidelyrics}
 					class:border-letkwet-500={hidelyrics}
 					class:text-letkwet-500={hidelyrics}
-					class="w-10 h-10 rounded p-2 mb-6"
+					class="w-10 h-10 rounded p-2"
 					onclick={() => (hidelyrics = !hidelyrics)}
 					type="button"
 					aria-label={hidelyrics ? 'Show lyrics' : 'Hide lyrics'}
 				>
 					<Icon src={QueueList} solid={!hidelyrics} />
+				</button>
+				<button
+					class="w-10 h-10 rounded bg-letkwet-500 text-white font-bold text-sm mb-6"
+					onclick={() => (columnMode = columnMode >= 3 ? 1 : columnMode + 1)}
+					type="button"
+					aria-label={`Columns: ${columnMode}`}
+				>
+					{columnMode}
 				</button>
 				<button
 					class="w-10 h-10 rounded bg-letkwet-500 text-white font-bold text-xl"
