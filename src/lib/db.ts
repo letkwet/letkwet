@@ -47,7 +47,7 @@ interface LetkwetDB extends DBSchema {
 }
 
 const DB_NAME = 'letkwet';
-const DB_VERSION = 2;
+const DB_VERSION = 20;
 
 function normalizeSong(song: ISong): SongRecord {
 	return {
